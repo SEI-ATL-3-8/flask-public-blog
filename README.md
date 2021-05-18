@@ -1,4 +1,5 @@
 # Public blog... in flask!
+It's throwback Tuesday! Remember this gem? https://github.com/SEI-ATL-3-8/public-blog
 
 ### Overview
 We will build a flask app that provides a backend for a public blog. We need to satisfy all the following use cases:
@@ -6,18 +7,17 @@ We will build a flask app that provides a backend for a public blog. We need to 
 | http verb  | route | notes | 
 | ------------- | ------------- | --- | 
 |GET    | /                              | just says 'ok' |
-|GET    | /posts                         | |
-|GET    | /posts/:id                     | |
-|POST   | /posts                         | |
-|PUT    | /posts/:id                     | |
-|DELETE | /posts/:id                     | |
-|POST   | /posts/:id/comments            | |
-|GET    | /posts/:id/comments            | |
+|GET    | /posts                         | doesn't include comments on each post |
+|GET    | /posts/:id                     | includes the comments at a separate json key |
+|POST   | /posts                         | returns the post that got created|
+|PUT    | /posts/:id                     | returns the edited post |
+|DELETE | /posts/:id                     | returns the deleted post |
+|POST   | /posts/:id/comments            | returns the post and the comment that got created at 2 separate json keys|
 |GET    | /topics                        | |
-|POST   | /topics                        | |
-|PUT    | /topics/:topicId/posts/:postId | associates a post with a topic |
-|DELETE | /topics/:topicId/posts/:postId | disassociates a post from a topic |
-|GET    | /topics/:id/posts              | |
+|POST   | /topics                        | returns the topic that got created|
+|PUT    | /topics/:topicId/posts/:postId | associates a post with a topic, returns the post and topic at separate json keys|
+|DELETE | /topics/:topicId/posts/:postId | disassociates a post from a topic, returns the post and topic at separate json keys |
+|GET    | /topics/:id/posts              | returns the topic and the post as separate json keys|
 
 
 ### Setup
