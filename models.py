@@ -6,7 +6,6 @@ class Post(db.Model):
   id = db.Column(db.Integer, primary_key=True)
   title = db.Column(db.String, nullable=False)
   body = db.Column(db.String)
-  topics = db.relationship('Topic', secondary="taggings")
   def to_json(self, include_comments=False):
     if include_comments:
       return {
@@ -39,7 +38,7 @@ class Topic(db.Model):
   __tablename__ = 'topics'
   id = db.Column(db.Integer, primary_key=True)
   name = db.Column(db.String)
-  posts = db.relationship('Post', secondary="taggings")
+  posts = db.relationship('Post', secondary="taggings", backref="topics")
   def to_json(self):
     return {
       "id": self.id,
